@@ -227,7 +227,14 @@ module.exports = {
             ('Yemen'),
             ('Zambia'),
             ('Zimbabwe');
-        `).then(() => {
+
+            INSERT INTO cities (name, rating, country_id)
+            VALUES ('St George', 5, (SELECT country_id FROM countries WHERE name = 'United States of America')),
+            ('Springville', 4, (SELECT country_id FROM countries WHERE name = 'United States of America')),
+            ('Sao Paulo', 4, (SELECT country_id FROM countries WHERE name = 'Brazil')),
+            ('Lisbon', 4, (SELECT country_id FROM countries WHERE name = 'Portugal')),
+            ('Mexico', 3, (SELECT country_id FROM countries WHERE name = 'Mexico'));`)
+            .then(() => {
             console.log('DB seeded!')
             res.sendStatus(200)
         }).catch(err => console.log('error seeding DB', err))
@@ -263,7 +270,8 @@ module.exports = {
         sequelize.query(`
         SELECT city.city_id, city.name city, city.rating, city.country_id, country.country_id, country.name country
         FROM cities city
-        JOIN countries country ON city.country_id = country.country_id;`)
+        JOIN countries country ON city.country_id = country.country_id
+        ORDER BY city.rating DESC;`)
         .then((dbRes) => {
             res.status(200).send(dbRes[0])
         })
