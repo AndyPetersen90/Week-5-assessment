@@ -1,0 +1,39 @@
+Pet Adoption Agency
+
+
+Adopter profiles
+-adopter id
+-adopter firstname
+-adopter lastname
+-adopter email
+-adopter phone(optional)
+-adopter preferences id
+
+Adopter preferences
+-adopter preferences id
+-adopter id
+-desired size
+-desired age 
+-desired breed(s)
+-desired fur
+
+Adoptee profiles
+-adoptee id
+-adoptee name
+-adoptee breed
+-adoptee size
+-adoptee age
+-adoptee fur
+-adoptee personality
+
+adoptee treatments
+-treatment id
+-adoptee id
+-treatment provided
+-ongoing
+
+successful adoptions
+-adoption id
+-adopter id
+-adoptee id
+-date adopted
